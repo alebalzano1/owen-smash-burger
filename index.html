@@ -24,15 +24,15 @@
         }
 
         :root {
-            --gold: #F5C518;
-            --gold-dark: #c49b0f;
-            --black: #080808;
-            --surface: #111111;
-            --surface2: #1a1a1a;
-            --white: #F2F2F2;
+            --gold: #FBB329;
+            --gold-dark: #e0b30d;
+            --black: #181818;
+            --surface: #1a1a1a;
+            --surface2: #222222;
+            --white: #FFFFDE;
             --red: #D93025;
-            --muted: #444;
-            --border: rgba(255, 255, 255, 0.07);
+            --muted: rgba(255, 255, 222, 0.4);
+            --border: rgba(255, 255, 222, 0.07);
         }
 
         html {
@@ -40,7 +40,11 @@
         }
 
         body {
-            background: var(--black);
+            background-color: var(--black);
+            background-image: url("textura-owen.png");
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
             color: var(--white);
             font-family: 'Futura-Book', 'Futura', 'Jost', sans-serif;
             overflow-x: hidden;
@@ -196,16 +200,16 @@
         .hero-bg-img {
             position: absolute;
             inset: 0;
-            background-image: url('https://images.unsplash.com/photo-1586816001966-79b736744398?w=1600&q=75');
+            background-color: transparent;
+            background-image: url("textura-owen.png");
             background-size: cover;
             background-position: center;
-            filter: brightness(0.18) saturate(0.5);
         }
 
         .hero-bg-gradient {
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(245, 197, 24, 0.06) 0%, transparent 70%);
+            background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(251, 179, 41, 0.08) 0%, transparent 70%);
         }
 
         .hero-tag {
@@ -231,6 +235,16 @@
             display: flex;
             justify-content: center;
             width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .hero-logo-wrap {
+                margin-top: -40px;
+                margin-bottom: -40px;
+            }
+            .hero-btns {
+                margin-top: 0px;
+            }
         }
 
         .hero-logo-img {
@@ -384,7 +398,8 @@
 
         /* MENU */
         .menu-section {
-            background: var(--surface);
+            background: rgba(24, 24, 24, 0.85);
+            backdrop-filter: blur(8px);
             padding: 80px 24px 100px;
         }
 
@@ -580,7 +595,8 @@
 
         /* PROMOS */
         .promos-section {
-            background: var(--black);
+            background: rgba(24, 24, 24, 0.85);
+            backdrop-filter: blur(8px);
             padding: 80px 24px;
         }
 
@@ -592,55 +608,188 @@
         }
 
         .promo-card {
-            background: var(--surface);
+            background: rgba(26, 26, 26, 0.8);
             border: 1px solid var(--border);
-            padding: 36px 30px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
             transition: border-color 0.3s, transform 0.3s;
         }
 
         .promo-card:hover {
-            border-color: rgba(245, 197, 24, 0.3);
+            border-color: var(--gold);
             transform: translateY(-4px);
         }
 
-        .promo-icon {
-            font-size: 40px;
-            margin-bottom: 16px;
+        .promo-img-wrap {
+            position: relative;
+            overflow: hidden;
+            height: 280px;
+            background: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .promo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease, filter 0.3s;
+            filter: brightness(0.9);
+        }
+
+        .promo-card:hover .promo-img {
+            transform: scale(1.05);
+            filter: brightness(1.05);
+        }
+
+        .promo-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .promo-name {
             font-family: 'Zuume Rough', 'Bebas Neue', sans-serif;
-            font-size: 30px;
-            color: var(--gold);
+            font-size: 32px;
+            color: var(--white);
             margin-bottom: 8px;
+            line-height: 1;
         }
 
         .promo-desc {
             font-size: 14px;
             line-height: 1.6;
-            color: rgba(242, 242, 242, 0.5);
-            white-space: normal;
-            word-break: break-word;
-            overflow: visible;
+            color: rgba(255, 255, 222, 0.6);
+            margin-bottom: 16px;
+            flex: 1;
         }
 
         .promo-cond {
-            display: inline-block;
-            margin-top: 16px;
-            font-family: 'Futura-Bold', 'Futura-Demi', 'Futura', 'Jost', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
+            align-self: flex-start;
+            font-family: 'Futura-Bold', 'Futura-Demi', 'Futura', sans-serif;
+            font-size: 12px;
+            font-weight: 900;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--gold);
-            border-bottom: 1px solid rgba(245, 197, 24, 0.3);
-            padding-bottom: 2px;
+            color: var(--black);
+            background: var(--gold);
+            padding: 6px 14px;
+            clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
         }
 
         /* INFO */
         .info-section {
-            background: var(--surface);
+            background: rgba(24, 24, 24, 0.85);
+            backdrop-filter: blur(8px);
             padding: 80px 24px;
+        }
+
+        /* Alejo Contact Section Styles */
+        .info-layout {
+            display: flex;
+            gap: 40px;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .info-content-wrap {
+            flex: 1;
+        }
+
+        .alejo-contact-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+            width: 300px;
+        }
+
+        .alejo-contact-img {
+            width: 230px;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.6));
+            transition: transform 0.3s ease;
+        }
+
+        .alejo-contact-img:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .alejo-bubble {
+            position: relative;
+            background: var(--white);
+            color: var(--black);
+            border: 3px solid var(--black);
+            border-radius: 16px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 4px 4px 0px var(--gold);
+            transform: rotate(1deg);
+        }
+
+        /* Comic bubble tail pointing down */
+        .alejo-bubble::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px;
+            border-style: solid;
+            border-color: var(--black) transparent transparent transparent;
+        }
+
+        .alejo-bubble::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 7px;
+            border-style: solid;
+            border-color: var(--white) transparent transparent transparent;
+            z-index: 1;
+            margin-top: -4px;
+        }
+
+        .alejo-bubble-title {
+            font-family: 'Zuume Rough', 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            color: var(--black);
+            line-height: 1;
+        }
+
+        .alejo-bubble-text {
+            font-family: 'Futura-Bold', 'Futura-Demi', 'Futura', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.35;
+            color: var(--black);
+            text-transform: none;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 992px) {
+            .info-layout {
+                flex-direction: column;
+                align-items: center;
+                gap: 48px;
+            }
+            .info-content-wrap {
+                width: 100%;
+            }
+            .alejo-contact-card {
+                width: 100%;
+                max-width: 280px;
+            }
         }
 
         .info-grid {
@@ -758,7 +907,8 @@
 
         /* FOOTER */
         footer {
-            background: #050505;
+            background: rgba(8, 8, 8, 0.85);
+            backdrop-filter: blur(8px);
             border-top: 1px solid var(--border);
             padding: 56px 32px 28px;
         }
@@ -925,7 +1075,8 @@
             width: 100%;
             max-width: 420px;
             height: 100vh;
-            background: var(--surface);
+            background: rgba(26, 26, 26, 0.92);
+            backdrop-filter: blur(12px);
             border-left: 1px solid var(--border);
             display: flex;
             flex-direction: column;
@@ -973,7 +1124,7 @@
 
         .cart-empty {
             text-align: center;
-            padding: 60px 0;
+            padding: 10px 0;
             font-family: 'Futura-Bold', 'Futura-Demi', 'Futura', 'Jost', sans-serif;
             font-size: 16px;
             letter-spacing: 2px;
@@ -981,10 +1132,116 @@
             color: rgba(242, 242, 242, 0.25);
         }
 
-        .cart-empty-icon {
-            font-size: 48px;
+        /* Zoe Empty Cart Styles */
+        .zoe-empty-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px 0;
+            animation: zoeBounceIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        }
+
+        .zoe-empty-img {
+            width: 200px;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
             margin-bottom: 12px;
-            opacity: 0.3;
+            transition: transform 0.3s ease;
+        }
+
+        .zoe-empty-img:hover {
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        .zoe-bubble {
+            position: relative;
+            background: var(--white);
+            color: var(--black);
+            border: 3px solid var(--black);
+            border-radius: 16px;
+            padding: 14px 18px;
+            margin: 10px 0 24px;
+            max-width: 280px;
+            box-shadow: 4px 4px 0px var(--gold);
+            transform: rotate(-1deg);
+        }
+
+        /* Comic bubble tail */
+        .zoe-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent transparent var(--black) transparent;
+        }
+        
+        .zoe-bubble::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 7px;
+            border-style: solid;
+            border-color: transparent transparent var(--white) transparent;
+            z-index: 1;
+            margin-bottom: -4px;
+        }
+
+        .zoe-bubble-title {
+            font-family: 'Zuume Rough', 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            color: var(--black);
+            line-height: 1;
+        }
+
+        .zoe-bubble-text {
+            font-family: 'Futura-Bold', 'Futura-Demi', 'Futura', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: var(--black);
+            text-transform: none;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-zoe-menu {
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            font-family: 'Futura-Bold', 'Futura-Demi', 'Futura', sans-serif;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 10px 24px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+        }
+
+        .btn-zoe-menu:hover {
+            background: #fff;
+            transform: translateY(-2px) scale(1.03);
+        }
+
+        @keyframes zoeBounceIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .cart-item {
@@ -2744,30 +3001,39 @@
         </section>
 
         <section id="contacto" class="info-section">
-            <div class="section-inner">
-                <div class="reveal">
-                    <h2 class="section-title" style="margin-bottom: 48px;">Encontranos</h2>
+            <div class="section-inner info-layout">
+                <div class="info-content-wrap">
+                    <div class="reveal">
+                        <h2 class="section-title" style="margin-bottom: 48px;">Encontranos</h2>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-box reveal">
+                            <p class="info-box-label">Zona de Delivery</p>
+                            <p class="info-box-title" id="deliveryZoneInfo">Zona Norte, Bs As</p>
+                            <p>Delivery en la zona norte del GBA. Consultá si llegamos a tu barrio.</p>
+                        </div>
+                        <div class="info-box reveal reveal-d1">
+                            <p class="info-box-label">Horario de Atención</p>
+                            <p class="info-box-title">Martes a Domingos</p>
+                            <p><strong>12:00 a 13:00hs</strong> — Mediodía<br><strong>19:00 a 01:00hs</strong> — Noche</p>
+                            <p style="margin-top:8px">Lunes: cerrado</p>
+                        </div>
+                        <div class="info-box reveal reveal-d2">
+                            <p class="info-box-label">Seguinos</p>
+                            <p class="info-box-title">Redes</p>
+                            <p><a href="https://instagram.com/owensmashburger.ba" target="_blank"
+                                    id="contactInstagram">@owensmashburger.ba</a><br><br><a
+                                    href="https://wa.me/5491176540665" target="_blank" id="contactWhatsapp">11 7654-0665</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="info-grid">
-                    <div class="info-box reveal">
-                        <p class="info-box-label">Zona de Delivery</p>
-                        <p class="info-box-title" id="deliveryZoneInfo">Zona Norte, Bs As</p>
-                        <p>Delivery en la zona norte del GBA. Consultá si llegamos a tu barrio.</p>
+                <div class="alejo-contact-card reveal">
+                    <div class="alejo-bubble">
+                        <h4 class="alejo-bubble-title">¿PINTÓ SMASH?</h4>
+                        <p class="alejo-bubble-text">Relax, de martes a domingos abrimos las puertas. Hacé tu pedido y te lo mandamos volando.</p>
                     </div>
-                    <div class="info-box reveal reveal-d1">
-                        <p class="info-box-label">Horario de Atención</p>
-                        <p class="info-box-title">Martes a Domingos</p>
-                        <p><strong>12:00 a 13:00hs</strong> — Mediodía<br><strong>19:00 a 01:00hs</strong> — Noche</p>
-                        <p style="margin-top:8px">Lunes: cerrado</p>
-                    </div>
-                    <div class="info-box reveal reveal-d2">
-                        <p class="info-box-label">Seguinos</p>
-                        <p class="info-box-title">Redes</p>
-                        <p><a href="https://instagram.com/owensmashburger.ba" target="_blank"
-                                id="contactInstagram">@owensmashburger.ba</a><br><br><a
-                                href="https://wa.me/5491176540665" target="_blank" id="contactWhatsapp">11 7654-0665</a>
-                        </p>
-                    </div>
+                    <img src="alejo.png" alt="Alejo" class="alejo-contact-img">
                 </div>
             </div>
         </section>
@@ -2847,11 +3113,17 @@
             </div>
             <div class="cart-items" id="cartItems">
                 <div class="cart-empty" id="cartEmpty">
-                    <div class="cart-empty-icon">🍔</div>
-                    <p>Tu pedido está vacío</p>
+                    <div class="zoe-empty-container">
+                        <img src="zoe.png" alt="Zoe" class="zoe-empty-img">
+                        <div class="zoe-bubble">
+                            <h4 class="zoe-bubble-title">¿VACÍO?</h4>
+                            <p class="zoe-bubble-text">No te lo permito. Metete una Smash antes de que me enoje.</p>
+                        </div>
+                        <button class="btn-zoe-menu" onclick="closeCart()">VER MENÚ</button>
+                    </div>
                 </div>
             </div>
-            <div class="cart-footer">
+            <div class="cart-footer" id="cartFooter" style="display: none;">
                 <div class="cart-total">
                     <span class="cart-total-label">Total</span>
                     <span class="cart-total-num" id="cartTotal">$0</span>
@@ -3014,9 +3286,9 @@
                 ];
 
                 const defaultPromos = [
-                    { icon: '🔥', name: '2x1 los Martes', desc: 'Dos The Owen al precio de una. Válido todos los martes en el primer turno.', cond: 'Solo Martes 12–13hs', visible: true },
-                    { icon: '🍟', name: 'Combo Smash', desc: 'Cualquier burger + papas medianas + de regalo un aderezo especial.', cond: 'Disponible siempre', visible: true },
-                    { icon: '👥', name: 'Club Smash', desc: 'Seguinos en Instagram y mencionalo al pedir para beneficios exclusivos.', cond: '@owensmashburger.ba', visible: true }
+                    { img: 'promo-furia.jpg', name: 'Combo Furia', desc: 'Hamburguesa Furia (Triple Smash) + Gaseosa bien fría + Papas crocantes.', cond: 'Precio Especial: $17.900', visible: true },
+                    { img: 'promo-owen.jpg', name: 'Combo Owen', desc: 'Nuestra hamburguesa insignia The Owen (Triple Smash Insane) + Gaseosa + Papas.', cond: 'Precio Especial: $17.900', visible: true },
+                    { img: 'promo-cheese.jpg', name: 'Combo Cheese', desc: 'Doble Cheese Smash + Gaseosa + Papas fritas clásicas.', cond: 'Precio Especial: $14.000', visible: true }
                 ];
 
                 const defaultConfig = {
@@ -3330,6 +3602,7 @@
 
                     const itemsEl = document.getElementById('cartItems');
                     const emptyEl = document.getElementById('cartEmpty');
+                    const footerEl = document.getElementById('cartFooter');
                     if (itemsEl) {
                         itemsEl.innerHTML = '';
                         if (!cart.length) {
@@ -3337,10 +3610,14 @@
                                 itemsEl.appendChild(emptyEl);
                                 emptyEl.style.display = '';
                             }
+                            if (footerEl) {
+                                footerEl.style.display = 'none';
+                            }
                             validateCheckoutForm();
                             return;
                         }
                         if (emptyEl) emptyEl.style.display = 'none';
+                        if (footerEl) footerEl.style.display = '';
 
                         cart.forEach(item => {
                             let subText = item.sub;
@@ -3387,41 +3664,75 @@
                 document.getElementById('cartClose').onclick = closeCart;
                 document.getElementById('cartOverlay').onclick = closeCart;
 
-                document.getElementById('btnCheckout').onclick = () => {
+                document.getElementById('btnCheckout').onclick = async () => {
                     if (!cart.length) return;
 
                     const name = document.getElementById('formName').value.trim();
                     const address = document.getElementById('formAddress').value.trim();
                     const refs = document.getElementById('formRefs').value.trim() || '—';
 
-                    const cleanPhone = config.whatsapp.replace(/\D/g, '');
-                    let msg = `${config.welcomeMessage}\n\n`;
-                    msg += `👤 Nombre: ${name}\n`;
-                    msg += `📍 Dirección: ${address}\n`;
-                    msg += `📝 Referencias: ${refs}\n\n`;
+                    if(!name || !address) {
+                        alert("Por favor completa tu nombre y dirección.");
+                        return;
+                    }
 
-                    msg += '🍔 PEDIDO:\n';
-                    cart.forEach(i => {
-                        msg += `- ${i.name} (${i.sub}) x${i.qty} → $${(i.price * i.qty).toLocaleString('es-AR')}\n`;
-                        if (i.extras && i.extras.length > 0) {
-                            i.extras.forEach(ext => {
-                                msg += `  ➕ ${ext.name}\n`;
-                            });
-                        }
-                        if (i.removals && i.removals.length > 0) {
-                            i.removals.forEach(rem => {
-                                msg += `  ➖ Sin ${rem}\n`;
-                            });
-                        }
-                        if (i.note && i.note.trim() !== '') {
-                            msg += `  📝 ${i.note.trim()}\n`;
-                        }
-                    });
+                    const btn = document.getElementById('btnCheckout');
+                    btn.disabled = true;
+                    btn.textContent = "⏳ Procesando...";
 
-                    const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
-                    msg += `\n💰 Total: $${total.toLocaleString('es-AR')}`;
+                    try {
+                        const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
 
-                    window.open(`https://wa.me/${cleanPhone}?text=` + encodeURIComponent(msg), '_blank');
+                        // Guardar en Firestore
+                        const orderData = {
+                            customer: { name, address, refs },
+                            items: cart,
+                            total: total,
+                            status: 'pendiente',
+                            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                            source: 'web'
+                        };
+                        
+                        await db.collection('orders').add(orderData);
+
+                        const cleanPhone = config.whatsapp.replace(/\D/g, '');
+                        let msg = `${config.welcomeMessage}\n\n`;
+                        msg += `👤 Nombre: ${name}\n`;
+                        msg += `📍 Dirección: ${address}\n`;
+                        msg += `📝 Referencias: ${refs}\n\n`;
+
+                        msg += '🍔 PEDIDO:\n';
+                        cart.forEach(i => {
+                            msg += `- ${i.name} (${i.sub}) x${i.qty} → $${(i.price * i.qty).toLocaleString('es-AR')}\n`;
+                            if (i.extras && i.extras.length > 0) {
+                                i.extras.forEach(ext => {
+                                    msg += `  ➕ ${ext.name}\n`;
+                                });
+                            }
+                            if (i.removals && i.removals.length > 0) {
+                                i.removals.forEach(rem => {
+                                    msg += `  ➖ Sin ${rem}\n`;
+                                });
+                            }
+                            if (i.note && i.note.trim() !== '') {
+                                msg += `  📝 ${i.note.trim()}\n`;
+                            }
+                        });
+
+                        msg += `\n💰 Total: $${total.toLocaleString('es-AR')}`;
+
+                        cart = [];
+                        updateCartUI();
+                        closeCart();
+
+                        window.open(`https://wa.me/${cleanPhone}?text=` + encodeURIComponent(msg), '_blank');
+                    } catch (error) {
+                        console.error("Error al guardar pedido: ", error);
+                        alert("Hubo un error al procesar tu pedido. Por favor intenta de nuevo.");
+                    } finally {
+                        btn.disabled = false;
+                        btn.textContent = "💬 Confirmar Pedido";
+                    }
                 };
 
                 function isStoreOpen(date) {
@@ -3628,13 +3939,25 @@
                     grid.innerHTML = '';
                     const visiblePromos = promos.filter(pr => pr.visible !== false);
                     visiblePromos.forEach((pr, idx) => {
+                        // Map local image paths for the combos if not defined or if they match by name
+                        let imgPath = pr.img;
+                        if (!imgPath && pr.name) {
+                            if (pr.name.toLowerCase().includes('furia')) imgPath = 'promo-furia.jpg';
+                            else if (pr.name.toLowerCase().includes('owen')) imgPath = 'promo-owen.jpg';
+                            else if (pr.name.toLowerCase().includes('cheese')) imgPath = 'promo-cheese.jpg';
+                        }
+
                         const card = document.createElement('div');
                         card.className = `promo-card reveal reveal-d${idx % 3}`;
                         card.innerHTML = `
-                    <div class="promo-icon">${pr.icon}</div>
-                    <div class="promo-name">${pr.name}</div>
-                    <p class="promo-desc">${pr.desc}</p>
-                    <span class="promo-cond">${pr.cond}</span>
+                    <div class="promo-img-wrap">
+                        ${imgPath ? `<img src="${imgPath}" alt="${pr.name}" class="promo-img" loading="lazy">` : `<div style="font-size: 40px; opacity: 0.3;">${pr.icon || '🔥'}</div>`}
+                    </div>
+                    <div class="promo-body">
+                        <div class="promo-name">${pr.name}</div>
+                        <p class="promo-desc">${pr.desc}</p>
+                        <span class="promo-cond">${pr.cond}</span>
+                    </div>
                 `;
                         grid.appendChild(card);
                     });
